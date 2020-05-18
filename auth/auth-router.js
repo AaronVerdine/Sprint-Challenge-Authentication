@@ -61,4 +61,21 @@ function generateToken(user) {
   return jwt.sign(payload, secrets.jwtSecret, options);
 }
 
+router.get("/logout", (req, res) => {
+  if (req.session) {
+    req.session.destroy((err) => {
+      if (err) {
+        res.status(500).json({
+          message:
+            "You can check out anytime you like, but you can never leave",
+        });
+      } else {
+        res.status(200).json({ message: "logged out succeffully" });
+      }
+    });
+  } else {
+    res.status(200).json({ message: "already logged out" });
+  }
+});
+
 module.exports = router;
