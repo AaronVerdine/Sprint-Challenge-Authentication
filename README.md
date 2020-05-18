@@ -16,19 +16,19 @@ The Minimum Viable Product must be completed in three hours.
 
 Follow these steps to set up and work on your project:
 
-- [ ] Create a forked copy of this project.
-- [ ] Add your _Team Lead_ as collaborator on Github.
-- [ ] Clone your forked version of the Repository.
-- [ ] Create a new Branch on the clone: git checkout -b `firstName-lastName`.
-- [ ] Implement the project on this Branch, committing changes regularly.
-- [ ] Push commits: git push origin `firstName-lastName`.
+- [x] Create a forked copy of this project.
+- [x] Add your _Team Lead_ as collaborator on Github.
+- [x] Clone your forked version of the Repository.
+- [x] Create a new Branch on the clone: git checkout -b `firstName-lastName`.
+- [x] Implement the project on this Branch, committing changes regularly.
+- [x] Push commits: git push origin `firstName-lastName`.
 
 Follow these steps for completing your project.
 
-- [ ] Submit a Pull-Request to merge `firstName-lastName` branch into `master` on your fork. **Please don't make Pull Requests against Lambda's repository**.
-- [ ] Please don't merge your own pull request.
-- [ ] Add your _Team Lead_ as a Reviewer on the Pull-request
-- [ ] Your _Team Lead_ will count the challenge as done by merging the branch into _master_.
+- [x] Submit a Pull-Request to merge `firstName-lastName` branch into `master` on your fork. **Please don't make Pull Requests against Lambda's repository**.
+- [x] Please don't merge your own pull request.
+- [x] Add your _Team Lead_ as a Reviewer on the Pull-request
+- [x] Your _Team Lead_ will count the challenge as done by merging the branch into _master_.
 
 ## Commits
 
@@ -38,13 +38,21 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] What is the purpose of using _sessions_?
+- [x] What is the purpose of using _sessions_?
 
-- [ ] What does bcrypt do to help us store passwords in a secure manner.
+  Sessions are in-memory “containers” used to persist authentication details across multiple requests. Most common uses for sessions include storage of client information so that the client doesn’t have to login at every endpoint.
 
-- [ ] What does bcrypt do to slow down attackers?
+- [x] What does bcrypt do to help us store passwords in a secure manner.
 
-- [ ] What are the three parts of the JSON Web Token?
+  Bcrypt scrambles or “hashes” passwords before they are stored in memory. Sessions are commonly used to store passwords, but are considered a security liability if they are stored in plain text. As a result we use software like bcrypt to hash our passwords before they are passed through sessions.
+
+- [x] What does bcrypt do to slow down attackers?
+
+  We first call on bcrypt’s hashing functionality by invoking the hashSync() function, which accepts two parameters: the password from the user object, and an exponent. Whatever exponent is defined bcrypt will hash the password exponentially. The larger the exponent, the longer it takes bcrypt to hash the passwords. Larger exponents are used as a deterrent for cyber attackers, who seek quicker thereby less secure hash algorithms.
+
+- [x] What are the three parts of the JSON Web Token?
+
+  The JSON Web Token includes three parts. First is the header, which defines the algorithm standard used along with the token type. The second element is the payload, which defines any claims or data being stored in the token. The most common details stored are usually client details such as userID. The third element is the most crucial; the signature. The signature is comprised of a base64 encoded string that encompasess both the header and payload, as well as secret “codeword” or “passphrase” which is used to authenticate the token’s origins.
 
 ## Minimum Viable Product
 
